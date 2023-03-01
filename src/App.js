@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import { Breweries } from "./displays/Breweries";
 import { Search } from "./displays/Search";
-import { BrewLog } from "./displays/BrewLog";
+import { BrewLog } from "./displays/BrewLogs";
 
 
 export default function App() {
