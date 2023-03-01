@@ -1,14 +1,11 @@
-import { 
-  React,
-  useState
- } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Link
 } from "react-router-dom";
-import { fetchData } from "./api";
+// import { fetchData } from "./api";
 import { Breweries } from "./displays/Breweries";
 import { Search } from "./displays/Search";
 import { BrewLog } from "./displays/BrewLogs";
@@ -17,9 +14,6 @@ import './App.css'
 
 
 export default function App() {
-
-  const [breweries, setBreweries] = useState([])
-
   return (
     <Router>
       <div>
