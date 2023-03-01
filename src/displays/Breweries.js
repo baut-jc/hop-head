@@ -1,7 +1,11 @@
 import React from 'react'
+import { BreweryDetails } from '../components/BreweryDetails/BreweryDetails'
 
 export const Breweries = () => {
   return (
-    <div>Breweries</div>
+    <div>
+      <title>Breweries</title>
+      <BreweryDetails />
+      </div>
   )
 }
