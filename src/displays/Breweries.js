@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import fetchData from '../api'
+import { fetchData } from '../api'
 import { BreweryDetails } from '../components/BreweryDetails/BreweryDetail'
 
 export const Breweries = () => {
@@ -8,7 +8,7 @@ export const Breweries = () => {
 
   const fetchBreweries = async () => {
     try {
-      const data = await fetchData()
+      const data = await fetchData('87114')
       setBreweries(data)
       console.log('breweries' , breweries)
       setNetworkError(false)
@@ -22,16 +22,18 @@ export const Breweries = () => {
     fetchBreweries()
   }, [])
 
-  const breweryCards = breweries.map(brewery => {
+  const breweryCards = breweries.map((brewery) => {
     console.log('brewery', brewery)
     return (
-        <BreweryDetails 
-          id={brewery.id}
-          // name={brewery.name}
-          // street={brewery.street}
-          // contact={brewery.contact}
-          // website={brewery.website}
-          />
+        <div key={brewery.id}>
+          <BreweryDetails 
+            id={brewery.id}
+            name={brewery.name}
+            street={brewery.street}
+            contact={brewery.contact}
+            website={brewery.website}
+            />
+        </div>
     )
   })
 
