@@ -9,35 +9,15 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import fetchData from "./api";
-import { Breweries } from "./displays/Breweries";
+import { Breweries } from "./components/Breweries/Breweries";
 import { Search } from "./displays/Search";
 import { BrewLog } from "./displays/BrewLogs";
 import './App.css'
 
 export default function App() {
-  const [breweries, setBreweries] = useState([])
-  const [networkError, setNetworkError] = useState(false)
-
-  const fetchBreweries = async () => {
-    try {
-      const data = await fetchData()
-      setBreweries(data)
-      console.log('breweries' , breweries)
-      setNetworkError(false)
-    } catch (error) {
-      console.error(error)
-      setNetworkError(true)
-    }
-  }
-
-    useEffect(() => {
-      fetchBreweries()
-    }, [])
-
   return (
+    <div className='App'>
     <Router>
-      <div>
         <nav>
           <ul>
             <li>
@@ -56,7 +36,7 @@ export default function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/brewlog" element={<BrewLog />} />
         </Routes>
-      </div>
     </Router>
+    </div>
   );
 }

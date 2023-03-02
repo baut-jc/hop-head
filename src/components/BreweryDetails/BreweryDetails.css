@@ -1,0 +1,9 @@
+div {
+  display: flex;
+  flex-direction: row;
+  width: 30vw;
+}
+
+img {
+  width: 5vh;
+}

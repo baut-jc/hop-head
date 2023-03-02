@@ -4,10 +4,10 @@ import { Form } from 'react-router-dom'
 
 export const Search = () => {
   return (
-    <div>
+    <div className='zip-form'>
       <form>
         <input type='text' placeholder='Enter ZIP'/>
-        <Link to='/home'>
+        <Link to='/'>
           <button>Search</button>
         </Link>
       </form>
