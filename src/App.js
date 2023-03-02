@@ -1,11 +1,15 @@
-import React from "react";
-import {
+import { 
+  React,
+  useState,
+  useEffect
+ } from "react";
+ import {
   BrowserRouter as Router,
   Routes,
   Route,
   Link
 } from "react-router-dom";
-// import { fetchData } from "./api";
+import fetchData from "./api";
 import { Breweries } from "./displays/Breweries";
 import { Search } from "./displays/Search";
 import { BrewLog } from "./displays/BrewLogs";
@@ -14,6 +18,16 @@ import './App.css'
 
 
 export default function App() {
+  const [breweries, setBreweries] = useState('')
+
+  useEffect(() => {
+    fetchData()
+      .then((data) => {
+        setBreweries(data)
+        console.log('weeee!!', breweries)
+      })
+  })
+  
   return (
     <Router>
       <div>

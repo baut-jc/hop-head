@@ -1,11 +1,8 @@
-import { 
-  React,
-  useState
- } from "react";
+import React from 'react'
 import { BreweryDetails } from '../components/BreweryDetails/BreweryDetails'
 
 export const Breweries = () => {
-  const [breweries, setBreweries] = useState([])
+  // const [breweries, setBreweries] = useState([])
 
   return (
     <div>
