@@ -1,41 +1,15 @@
-import { 
-  React,
-  useState, 
-  useEffect
-} from 'react'
-import { fetchABrewery } from '../../api'
+import React from 'react'
+import siteIcon from '../../assets/weblink-icon.png'
+import './BreweryDetails.css'
 
-export function BreweryDetails() {
-
-  // const [breweryID, setBreweryID] = useState('')
-  const [brewery, setBrewery] = useState('')
-  // const [address, setAddress] = useState('')
-  // const [contact, setContact] = useState('')
-  // const [website, setWebsite] = useState('')
-  const [networkError, setNetworkError] = useState(false)
-
-  const fetchOneBrewery = async () => {
-    try {
-      const data = await fetchABrewery(brewery)
-      setBrewery(data)
-      console.log('oneBrewery', brewery)
-      setNetworkError(false)
-    } catch (error) {
-      console.error(error)
-      setNetworkError(true)
-    }
-  }
-
-  useEffect(() => {
-    fetchOneBrewery('toltec-brewing-co-albuquerque')
-  }, [])
+export function BreweryDetails({ id, name, street, contact, website }) {
 
   return (
-    <>
-      <h1>BreweryName</h1>
-      <p>address</p>
-      <p>phoneNumber</p>
-      <a>weblink</a>
-    </>
+    <div className={id}>
+      <h1>{name}</h1>
+      <p>{street}</p>
+      <p>{contact}</p>
+      <a href={website} alt={website}><img src={siteIcon}/></a>
+    </div>
   )
 }
