@@ -9,7 +9,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import { fetchData } from "./api";
+import fetchData from "./api";
 import { Breweries } from "./displays/Breweries";
 import { Search } from "./displays/Search";
 import { BrewLog } from "./displays/BrewLogs";
