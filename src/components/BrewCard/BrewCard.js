@@ -2,7 +2,7 @@ import React from 'react'
 
 export const BrewCard = () => {
   return (
-    <div>
+    <div className='brew-card'>
       {/* Filter by date <navlink> */}
       <h4>breweryName</h4>
       <input type='file'/>
