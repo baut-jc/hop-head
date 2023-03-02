@@ -1,9 +1,9 @@
-import { 
-  React,
-  useState,
-  useEffect
- } from "react";
- import {
+import  React,
+  { 
+    useState,
+    useEffect
+  } from "react";
+import {
   BrowserRouter as Router,
   Routes,
   Route,
@@ -15,19 +15,26 @@ import { Search } from "./displays/Search";
 import { BrewLog } from "./displays/BrewLogs";
 import './App.css'
 
-
-
 export default function App() {
-  const [breweries, setBreweries] = useState('')
+  const [breweries, setBreweries] = useState([])
+  const [networkError, setNetworkError] = useState(false)
 
-  useEffect(() => {
-    fetchData()
-      .then((data) => {
-        setBreweries(data)
-        console.log('weeee!!', breweries)
-      })
-  })
-  
+  const fetchBreweries = async () => {
+    try {
+      const data = await fetchData()
+      setBreweries(data)
+      console.log('breweries' , breweries)
+      setNetworkError(false)
+    } catch (error) {
+      console.error(error)
+      setNetworkError(true)
+    }
+  }
+
+    useEffect(() => {
+      fetchBreweries()
+    }, [])
+
   return (
     <Router>
       <div>
