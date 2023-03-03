@@ -13,6 +13,7 @@ import loading from './assets/homer.gif'
 import { Breweries } from "./components/Breweries/Breweries";
 import { Search } from "./displays/Search";
 import { BrewLog } from "./displays/BrewLogs";
+import { Error } from "./components/Errors/error";
 import './App.css'
 
 export default function App() {
@@ -42,7 +43,7 @@ export default function App() {
         </nav>
         <Routes>
           <Route 
-            path="/" 
+            path="/breweries" 
             element={<Breweries
               zipCode={zipCode} />} />
           <Route 
@@ -52,6 +53,7 @@ export default function App() {
                 takeZipCode={takeZipCode} />
             } />
           <Route path="/brewlog" element={<BrewLog />} />
+          <Route path="*" element={<Error />}/>
         </Routes>
     </Router>
     </div>

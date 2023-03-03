@@ -1,0 +1,23 @@
+div {
+  height: 60%
+}
+
+.no-data {
+  /* width: fit-content; */
+  height: 60%;
+  background: url('../../assets/thirsty.gif') no-repeat center center; 
+  /* -webkit-background-size: cover; */
+  /* -moz-background-size: cover; */
+  -o-background-size: cover;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: whitesmoke;
+  font-family: none;
+}
+
+/* section {
+  display: flex;
+  flex-direction: column;
+} */
