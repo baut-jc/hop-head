@@ -1,15 +1,18 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Form } from 'react-router-dom'
 
 export function Search({takeZipCode}) {
   
   const [postalCode, setPostalCode] = useState('')
+  const navigate = useNavigate()
 
   const submitForm = event => {
     event.preventDefault()
     takeZipCode(`${postalCode}`)
     clearForm()
+    console.log('CHUG!', postalCode)
+    navigate("/")
   }
   
   const clearForm = () => {
@@ -29,9 +32,7 @@ export function Search({takeZipCode}) {
           onChange={(e) => setPostalCode(e.target.value)}
           required 
           />
-          <button>Cheers</button> {/* cheers sound*/}
-        {/* <Link to='/'> */}
-        {/* </Link> */}
+          <button type='submit' onClick={submitForm}>Cheers</button> {/* cheers sound*/}
       </form>
     </div>
   )
