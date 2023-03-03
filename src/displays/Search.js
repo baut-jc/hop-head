@@ -12,7 +12,7 @@ export function Search({takeZipCode}) {
     takeZipCode(`${postalCode}`)
     clearForm()
     console.log('CHUG!', postalCode)
-    navigate("/")
+    navigate("/breweries")
   }
   
   const clearForm = () => {
@@ -30,7 +30,7 @@ export function Search({takeZipCode}) {
           value={postalCode}
           placeholder='Enter ZIP'
           onChange={(e) => setPostalCode(e.target.value)}
-          required 
+          required
           />
           <button type='submit'>Cheers</button> {/* cheers sound*/}
       </form>
