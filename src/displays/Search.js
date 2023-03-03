@@ -32,7 +32,7 @@ export function Search({takeZipCode}) {
           onChange={(e) => setPostalCode(e.target.value)}
           required 
           />
-          <button type='submit' onClick={submitForm}>Cheers</button> {/* cheers sound*/}
+          <button type='submit'>Cheers</button> {/* cheers sound*/}
       </form>
     </div>
   )
