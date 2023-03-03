@@ -3,13 +3,13 @@ import { fetchData } from '../../api'
 import { BreweryDetails } from '../BreweryDetails/BreweryDetail'
 import './Breweries.css'
 
-export const Breweries = () => {
+export const Breweries = ({zipCode}) => {
   const [breweries, setBreweries] = useState([])
   const [networkError, setNetworkError] = useState(false)
 
   const fetchBreweries = async () => {
     try {
-      const data = await fetchData('87114')
+      const data = await fetchData(zipCode)
       setBreweries(data)
       console.log('breweries' , breweries)
       setNetworkError(false)
