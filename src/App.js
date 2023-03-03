@@ -9,12 +9,20 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import loading from './assets/homer.gif'
 import { Breweries } from "./components/Breweries/Breweries";
 import { Search } from "./displays/Search";
 import { BrewLog } from "./displays/BrewLogs";
 import './App.css'
 
 export default function App() {
+  const [zipCode, setZipCode] = useState('')
+  
+  const takeZipCode = inputZip => {
+    setZipCode(inputZip)
+    console.log('cheers', zipCode)
+  }
+  
   return (
     <div className='App'>
     <Router>
@@ -30,10 +38,19 @@ export default function App() {
               <Link to="/brewlog">BrewLog</Link>
             </li>
           </ul>
+          <img src={ loading }/>
         </nav>
         <Routes>
-          <Route path="/" element={<Breweries />} />
-          <Route path="/search" element={<Search />} />
+          <Route 
+            path="/" 
+            element={<Breweries
+              zipCode={zipCode} />} />
+          <Route 
+            path="/search" 
+            element={
+              <Search
+                takeZipCode={takeZipCode} />
+            } />
           <Route path="/brewlog" element={<BrewLog />} />
         </Routes>
     </Router>
