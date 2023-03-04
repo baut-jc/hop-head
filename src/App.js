@@ -26,8 +26,8 @@ export default function App() {
     console.log('cheers', zipCode)
   }
 
-  const addToBrewFaves = newFaveBreweries => {
-    setFaveBreweries([...faveBreweries, newFaveBreweries])
+  const addToBrewFaves = newFaveBrewery => {
+    setFaveBreweries([...faveBreweries, newFaveBrewery])
   }
   
   return (

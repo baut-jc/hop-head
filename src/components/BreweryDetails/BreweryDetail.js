@@ -5,22 +5,21 @@ import faveButton from '../../assets/inactive-fave.png'
 import unFaveButton from '../../assets/active-fave.png'
 import './BreweryDetails.css'
 
-export function BreweryDetails({ id, name, street, contact, website, addToBrewFaves }) {
+export function BreweryDetails({ id, name, street, contact, website }) {
   
   const url = useLocation()
   const [faveBreweries, setFaveBreweries] = useState([])
-  const [oneBrewery, setOneBrewery] = useState('')
+  const isFaveBrewery = faveBreweries.includes(id)
 
-  const addToFave = () => {
+  const toggleFave = () => {
       // setOneBrewery(id)
-    if(!faveBreweries) {
-      const brewery = oneBrewery.id
-      setOneBrewery(brewery)
+    if(isFaveBrewery) {
+      setFaveBreweries(faveBreweries.filter(faveBrewID => faveBrewID !== id))
+    } else {
+      setFaveBreweries([...faveBreweries, id])
     }
-    setOneBrewery(id)
-    console.log('something', oneBrewery)//toltec-brewi
   } 
-  console.log('does this do?', oneBrewery)
+  console.log('something', faveBreweries)//toltec-brewi
 
 
   return (
@@ -29,9 +28,11 @@ export function BreweryDetails({ id, name, street, contact, website, addToBrewFa
       <p>{street}</p>
       <p>{contact}</p>
       <a href={website} alt={website}><img src={siteIcon}/></a>
-      {!oneBrewery 
-      ? <button onClick={addToFave}><img src={faveButton}/></button> 
-      : <button><img src={unFaveButton}/></button>}
+      <button onClick={toggleFave}>
+        {!isFaveBrewery 
+        ? <img src={faveButton} alt='Save to Faves'/> 
+        : <img src={unFaveButton} alt='Unsave from Faves'/>}
+      </button>
      {/* onClick={addToBrewLog} */}
     </div>
   )
