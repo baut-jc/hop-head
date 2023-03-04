@@ -12,16 +12,22 @@ import {
 import loading from './assets/homer.gif'
 import { Breweries } from "./components/Breweries/Breweries";
 import { Search } from "./displays/Search";
-import { BrewLog } from "./displays/BrewLogs";
+import { BrewFaves } from "./displays/BrewFaves";
 import { Error } from "./components/Errors/error";
 import './App.css'
 
 export default function App() {
   const [zipCode, setZipCode] = useState('')
+  const [faveBreweries, setFaveBreweries] = useState([])
+  console.log('does this do?', faveBreweries)
   
   const takeZipCode = inputZip => {
     setZipCode(inputZip)
     console.log('cheers', zipCode)
+  }
+
+  const addToBrewFaves = newFaveBreweries => {
+    setFaveBreweries([...faveBreweries, newFaveBreweries])
   }
   
   return (
@@ -42,18 +48,24 @@ export default function App() {
           <img src={ loading }/>
         </nav>
         <Routes>
+          {/* <Route path='/' element={<App />}/> */}
           <Route 
-            path="/breweries" 
+            path={`/breweries/${zipCode}`} 
             element={<Breweries
-              zipCode={zipCode} />} />
+              zipCode={zipCode}
+              addToBrewFaves={addToBrewFaves} />} />
           <Route 
             path="/search" 
             element={
               <Search
                 takeZipCode={takeZipCode} />
             } />
-          <Route path="/brewlog" element={<BrewLog />} />
-          <Route path="*" element={<Error />}/>
+          <Route path="/favorites" 
+            element={
+              <BrewFaves
+                 faveBreweries={faveBreweries}
+          />} />
+          {/* <Route path="*" element={<Error />}/> */}
         </Routes>
     </Router>
     </div>

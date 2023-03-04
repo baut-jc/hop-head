@@ -4,7 +4,7 @@ import { BreweryDetails } from '../BreweryDetails/BreweryDetail'
 import { Error } from '../Errors/error';
 import './Breweries.css'
 
-export const Breweries = ({zipCode}) => {
+export const Breweries = ({zipCode, addToBrewFaves}) => {
   const [breweries, setBreweries] = useState([])
   const [networkError, setNetworkError] = useState(false)
 
@@ -23,6 +23,7 @@ export const Breweries = ({zipCode}) => {
   useEffect(() => {
     fetchBreweries()
   }, [])
+  console.log('does this do?', breweries)
 
   const breweryCards = breweries.map((brewery) => {
     console.log('brewery', brewery)
@@ -35,6 +36,7 @@ export const Breweries = ({zipCode}) => {
             street={brewery.street}
             contact={brewery.phone}
             website={brewery.website_url}
+            addToBrewFaves={addToBrewFaves}
             />
         </div>
     )
