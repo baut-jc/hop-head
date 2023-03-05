@@ -6,14 +6,18 @@ import faveButton from '../../assets/inactive-fave.png'
 import unFaveButton from '../../assets/active-fave.png'
 import './BreweryDetails.css'
 
-export default function BreweryDetail({ id, zipCode, addFaveBreweries, faveBreweries, unFaveBrewery }) {
+export default function BreweryDetail({ id, name, phone, street, city, state, link, zipCode, addFaveBreweries, faveBreweries, unFaveBrewery }) {
 
   const [brewID, setBrewID] = useState ('')
   const [brewName, setBrewName] = useState ('')
   const [brewStreet, setBrewStreet] = useState ('')
+  const [brewCity, setBrewCity] = useState('', '')
   const [brewWebsite, setBrewWebsite] = useState ('')
+  const [brewContact, setBrewContact] = useState('')
   const [isFaved, setIsFaved] = useState(false)
+  const [toggleButton, setToggleButton] = useState(faveButton)
   const [networkError, setNetworkError] = useState(false)
+  const url = useLocation()
 
   useEffect(() => {
     if(faveBreweries.includes(id)){ 
@@ -26,47 +30,47 @@ export default function BreweryDetail({ id, zipCode, addFaveBreweries, faveBrewe
       setNetworkError(true)
     })
     .then(data=>{
-      console.log('just a Brewery', data)
       setBrewID(id)
-    })
+      setBrewName(data.name)
+      setBrewContact(data.phone)
+      setBrewStreet(data.street)
+      setBrewCity(data.city, data.state)
+      setBrewWebsite(data.website_url)
+      })  
   },[])
-
-  const url = useLocation()
   
-  // const handleFaves = () => {
-  //   const saveFavesBrewery = {
-  //     id: id,
-  //     name: name,
-  //     street: street,
-  //     contact: contact,
-  //     website: website
-  //   }
-  //   addToBrewFaves(saveFavesBrewery)
+  
+  const saveFaveBrewery = () => {
+    if(!isFaved) {
+      addFaveBreweries(brewID)
+      setIsFaved(true)
+      setToggleButton(unFaveButton)
+    } else {
+      unFaveBrewery(brewID)
+      setIsFaved(false)
+      setToggleButton(faveButton)
+    }
+    return
+  }
+
+  // const removeUnFaved = () => {
+  //   unFaveBrewery(brewID)
   // }
   
-  // const toggleFave = () => {
-    //     console.log('something', faveBreweries)//toltec-brewi
-    //   // if(isFaveBrewery) {
-      //   //   setFaveBreweries(faveBreweries.filter(faveBrewID => faveBrewID !== id))
-      //   // } else {
-        //   //   setFaveBreweries([...faveBreweries, id])
-        //   // }
-        // } 
-        
-        console.log('priint', faveBreweries)
-        return (
-          <div className={id}>
-      {console.log(faveBreweries)}
-      {/* <h1>{name}</h1> */}
-      <p>this should be the street</p>
-      <p>phone number</p>
-      {/* <a href={website} alt={website}><img src={siteIcon}/></a> */}
-      {/* <button onClick={handleFaves}> */}
-        {/* {!isFaveBrewery ? */}
-        {/* <img src={faveButton} alt='Save to Faves'/>  */}
-        {/* : <img src={unFaveButton} alt='Unsave from Faves'/>} */}
-      {/* </button> */}
-     {/* onClick={addToBrewLog} */}
-    </div>
+  return (
+    <>
+      <div className='brew-details' key={id}>
+        <h1>{name}</h1>
+        <p>{phone}</p>
+        <p>{street}</p>
+        <p>{city}, {state}</p>
+        <a href={link} alt={link}><img src={siteIcon}/></a>
+        <button onClick={saveFaveBrewery}>  
+          {url.pathname === `/breweries/${zipCode}` 
+            ? <img src={toggleButton} alt='Save to Faves'/>
+            : <img src={toggleButton} alt='Remove from Faves'/>}
+        </button>
+      </div>
+    </>
   )
 }

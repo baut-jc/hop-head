@@ -12,7 +12,7 @@ import {
 import loading from './assets/homer.gif'
 import { Breweries } from "./components/Breweries/Breweries";
 import { Search } from "./displays/Search";
-import { BrewFaves } from "./components/BrewFaves/BrewFaves";
+import BrewFaves from "./components/BrewFaves/BrewFaves";
 import { Error } from "./components/Errors/error";
 import './App.css'
 
@@ -31,7 +31,9 @@ export default function App() {
   }
 
   const unFaveBrewery = id => {
-    const filteredFaves = faveBreweries.filter(breweryID => breweryID != id)
+    console.log('maybe?', faveBreweries)
+    console.log('id?', id)
+    const filteredFaves = faveBreweries.filter(brewery => brewery !== id)
     setFaveBreweries(filteredFaves)
   }
   
@@ -70,7 +72,7 @@ export default function App() {
           <Route path="/favorites" 
             element={
               <BrewFaves
-                unfaveBrewery={unFaveBrewery}
+                unFaveBrewery={unFaveBrewery}
                 faveBreweries={faveBreweries}
               />
             } 

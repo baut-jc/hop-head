@@ -41,6 +41,12 @@ export const Breweries = ({zipCode, addFaveBreweries, faveBreweries, unFaveBrewe
           <BreweryDetails 
             id={brewery.id}
             key={brewery.id}
+            name={brewery.name}
+            phone={brewery.phone}
+            street={brewery.street}
+            city={brewery.city} 
+            state={brewery.state}
+            link={brewery.website_url}
             zipCode={zipCode}
             addFaveBreweries={addFaveBreweries}
             faveBreweries={faveBreweries}
@@ -51,8 +57,11 @@ export const Breweries = ({zipCode, addFaveBreweries, faveBreweries, unFaveBrewe
   })
 
   return (
+    <>
     <div className='breweries-display'>
-        {breweryCards.length > 0 ? breweryCards : <Error />}
+      {breweryCards.length > 0 ? breweryCards : <Error />}
+      <h1></h1>
     </div>
+    </>
   )
 }
