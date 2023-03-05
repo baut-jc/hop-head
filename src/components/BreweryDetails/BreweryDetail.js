@@ -8,55 +8,45 @@ import './BreweryDetails.css'
 
 export default function BreweryDetail({ id, name, phone, street, city, state, link, zipCode, addFaveBreweries, faveBreweries, unFaveBrewery }) {
 
-  const [brewID, setBrewID] = useState ('')
-  const [brewName, setBrewName] = useState ('')
-  const [brewStreet, setBrewStreet] = useState ('')
-  const [brewCity, setBrewCity] = useState('', '')
-  const [brewWebsite, setBrewWebsite] = useState ('')
-  const [brewContact, setBrewContact] = useState('')
   const [isFaved, setIsFaved] = useState(false)
   const [toggleButton, setToggleButton] = useState(faveButton)
   const [networkError, setNetworkError] = useState(false)
+  const [breweriesByZip, setBreweriesbyZip] = useState([])
   const url = useLocation()
 
   useEffect(() => {
-    if(faveBreweries.includes(id)){ 
+    if(breweriesByZip.includes(id)){ 
       setIsFaved(true)
       // toggleButton()
     }
     fetchABrewery(id, zipCode)
-    .catch((error) => {
-      console.error(error.message)
-      setNetworkError(true)
-    })
-    .then(data=>{
-      setBrewID(id)
-      setBrewName(data.name)
-      setBrewContact(data.phone)
-      setBrewStreet(data.street)
-      setBrewCity(data.city, data.state)
-      setBrewWebsite(data.website_url)
-      })  
-  },[])
-  
+      .catch((error) => {
+        console.error(error.message)
+        setNetworkError(true)
+      })
+      .then(data=>{
+        console.log('brewery detail', data)
+        setBreweriesbyZip(data) //array
+        }) 
+    },[])
+    
+    console.log('brewsbyZip', breweriesByZip)
+    const oneBrewery = breweriesByZip.find(brewery => brewery.id === id)
+  console.log('faveBreweries', faveBreweries)
+  console.log('oneBrewery', oneBrewery)
   
   const saveFaveBrewery = () => {
     if(!isFaved) {
-      addFaveBreweries(brewID)
+      addFaveBreweries(oneBrewery)
       setIsFaved(true)
       setToggleButton(unFaveButton)
     } else {
-      unFaveBrewery(brewID)
+      unFaveBrewery(oneBrewery)
       setIsFaved(false)
       setToggleButton(faveButton)
     }
-    return
   }
 
-  // const removeUnFaved = () => {
-  //   unFaveBrewery(brewID)
-  // }
-  
   return (
     <>
       <div className='brew-details' key={id}>
