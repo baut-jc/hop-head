@@ -8,7 +8,7 @@ export function Search({takeZipCode}) {
   const navigate = useNavigate()
 
   const submitForm = event => {
-    event.preventDefault()
+    // event.preventDefault()
     takeZipCode(`${postalCode}`)
     clearForm()
     console.log('CHUG!', postalCode)

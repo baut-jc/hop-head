@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { fetchData } from '../../api'
-import { BreweryDetails } from '../BreweryDetails/BreweryDetail'
+import BreweryDetails from '../BreweryDetails/BreweryDetail'
 import { Error } from '../Errors/error';
 import './Breweries.css'
 
-export const Breweries = ({zipCode, addToBrewFaves}) => {
+export const Breweries = ({zipCode, addFaveBreweries, faveBreweries, unFaveBrewery}) => {
+  
   const [breweries, setBreweries] = useState([])
   const [networkError, setNetworkError] = useState(false)
-
+  
   const fetchBreweries = async () => {
     try {
       const data = await fetchData(zipCode)
@@ -19,6 +20,13 @@ export const Breweries = ({zipCode, addToBrewFaves}) => {
       setNetworkError(true)
     }
   }
+  // const toggleFave = (id) => {
+  //   if (faveBreweries.includes(id)) {
+  //     setFaveBreweries(faveBreweries.filter(faveBrewID => faveBrewID !== id))
+  //   } else {
+  //     setFaveBreweries([...faveBreweries, id])
+  //   }
+  // }
 
   useEffect(() => {
     fetchBreweries()
@@ -28,15 +36,15 @@ export const Breweries = ({zipCode, addToBrewFaves}) => {
   const breweryCards = breweries.map((brewery) => {
     console.log('brewery', brewery)
     return (
-        <div key={brewery.id} className='brewery-container'>
+        <div className='brewery-container'>
           {/* if (breweries.length === 0) */}
           <BreweryDetails 
             id={brewery.id}
-            name={brewery.name}
-            street={brewery.street}
-            contact={brewery.phone}
-            website={brewery.website_url}
-            addToBrewFaves={addToBrewFaves}
+            key={brewery.id}
+            zipCode={zipCode}
+            addFaveBreweries={addFaveBreweries}
+            faveBreweries={faveBreweries}
+            unFaveBrewery={unFaveBrewery}
             />
         </div>
     )

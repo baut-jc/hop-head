@@ -12,7 +12,7 @@ import {
 import loading from './assets/homer.gif'
 import { Breweries } from "./components/Breweries/Breweries";
 import { Search } from "./displays/Search";
-import { BrewFaves } from "./displays/BrewFaves";
+import { BrewFaves } from "./components/BrewFaves/BrewFaves";
 import { Error } from "./components/Errors/error";
 import './App.css'
 
@@ -26,8 +26,13 @@ export default function App() {
     console.log('cheers', zipCode)
   }
 
-  const addToBrewFaves = newFaveBrewery => {
+  const addFaveBreweries = newFaveBrewery => {
     setFaveBreweries([...faveBreweries, newFaveBrewery])
+  }
+
+  const unFaveBrewery = id => {
+    const filteredFaves = faveBreweries.filter(breweryID => breweryID != id)
+    setFaveBreweries(filteredFaves)
   }
   
   return (
@@ -42,7 +47,7 @@ export default function App() {
               <Link to="/search">Search</Link>
             </li>
             <li>
-              <Link to="/brewlog">BrewLog</Link>
+              <Link to="/favorites">BrewFaves</Link>
             </li>
           </ul>
           <img src={ loading }/>
@@ -53,7 +58,9 @@ export default function App() {
             path={`/breweries/${zipCode}`} 
             element={<Breweries
               zipCode={zipCode}
-              addToBrewFaves={addToBrewFaves} />} />
+              addFaveBreweries={addFaveBreweries}
+              faveBreweries={faveBreweries}
+              unFaveBrewery={unFaveBrewery} />} />
           <Route 
             path="/search" 
             element={
@@ -63,8 +70,11 @@ export default function App() {
           <Route path="/favorites" 
             element={
               <BrewFaves
-                 faveBreweries={faveBreweries}
-          />} />
+                unfaveBrewery={unFaveBrewery}
+                faveBreweries={faveBreweries}
+              />
+            } 
+          />
           {/* <Route path="*" element={<Error />}/> */}
         </Routes>
     </Router>
