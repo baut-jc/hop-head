@@ -1,6 +1,12 @@
 .zip-form {
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
   align-items: center;
-  width: 90vh;
+  width: 90vw;
+  border-radius: 5px;
+}
+
+input {
+  width: 7em;
+  margin-bottom: 10px;
 }

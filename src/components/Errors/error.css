@@ -1,10 +1,10 @@
-div {
+/* div {
   height: 60%
-}
+} */
 
 .error {
-  /* width: fit-content; */
-  height: 60%;
+  width: auto;
+  height: 61vh;
   background: url('../../assets/thirsty.gif') no-repeat center center; 
   /* -webkit-background-size: cover; */
   /* -moz-background-size: cover; */
