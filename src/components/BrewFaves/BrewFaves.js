@@ -3,7 +3,7 @@ import siteIcon from '../../assets/weblink-icon.png'
 import remove from '../../assets/remove.png'
 import PropTypes from 'prop-types'
 
-function BrewFaves({id ,faveBreweries, unFaveBrewery}) {
+export default function BrewFaves({id ,faveBreweries, unFaveBrewery}) {
   const displaySavedFaves = faveBreweries.map(brewery => {
     const removeFromSaves = () => {
       unFaveBrewery(brewery)
@@ -27,8 +27,6 @@ function BrewFaves({id ,faveBreweries, unFaveBrewery}) {
   </div>
   )
 }
-
-export default BrewFaves
 
 BrewFaves.propTypes = {
   faveBreweries: PropTypes.array.isRequired,

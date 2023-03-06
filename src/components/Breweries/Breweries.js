@@ -27,7 +27,7 @@ export const Breweries = ({zipCode, addFaveBreweries, faveBreweries, unFaveBrewe
 
   const breweryCards = breweries.map((brewery) => {
     return (
-      <div className='brewery-container'>
+      <div className='brewery-container' key={brewery.id}>
         <BreweryDetails 
           id={brewery.id}
           key={brewery.id}
@@ -47,12 +47,10 @@ export const Breweries = ({zipCode, addFaveBreweries, faveBreweries, unFaveBrewe
   })
 
   return (
-    <>
       <div className='breweries-display'>
         {breweryCards.length > 0 ? breweryCards : <Error />}
         <h1></h1>
       </div>
-    </>
   )
 }
 

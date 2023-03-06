@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Search } from '../../displays/Search'
+import { Search } from '../Search/Search'
 import './error.css'
 
 export function Error() {
@@ -11,7 +11,7 @@ export function Error() {
   }
 
   return (
-    <div className='no-data'>
+    <div className='error'>
       <section>
         <h3>at a different zipCode.</h3>
         <Search 
