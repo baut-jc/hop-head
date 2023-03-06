@@ -1,5 +1,5 @@
 # HopHead
-## [https://baut-jc.github.io/levies](https://hop-head.vercel.app/)
+## [https://hop-head.vercel.app/](https://hop-head.vercel.app/)
 - The application is used by brewery hoppers to plan and checkout nearby breweries. User will be able to seach by inputting a valid US zip code to the search _form_, then, a page will display these different breweries in the area based on given input. They can then favorite their selected breweries and track their faves on the _BrewFaves_ tab.
 
 ## Abstract
