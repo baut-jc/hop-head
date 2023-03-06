@@ -48,6 +48,9 @@ export default function App() {
             <li>
               <Link to="/search">Search</Link>
             </li>
+              <li>
+              <Link to={`/breweries/${zipCode}`}>Breweries</Link>
+            </li>
             <li>
               <Link to="/favorites">BrewFaves</Link>
             </li>
@@ -72,8 +75,8 @@ export default function App() {
           <Route path="/favorites" 
             element={
               <BrewFaves
-                unFaveBrewery={unFaveBrewery}
                 faveBreweries={faveBreweries}
+                unFaveBrewery={unFaveBrewery}
               />
             } 
           />
