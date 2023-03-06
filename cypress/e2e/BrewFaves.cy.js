@@ -28,13 +28,8 @@ describe('BrewFaves display', () => {
       cy.get('form > input').type('87114')
       cy.get('button').click()
       cy.wait(1000)
-      cy.get(':nth-child(1) > .brew-details > button')
       cy.get('[href="/favorites"]').click()
       cy.get('p')
       cy.contains('You haven\'t saved anything!')
-      cy.get('button').click()
   })
-
-    
-
 })

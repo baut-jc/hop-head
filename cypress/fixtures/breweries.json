@@ -15,8 +15,8 @@
       "latitude": "35.2036804",
       "phone": "5058972327",
       "website_url": "http://www.boxingbearbrewing.com",
-      "updated_at": "",
-      "created_at": ""
+      "updated_at": "2023-02-21T01:41:59.300Z",
+      "created_at": "2023-02-21T01:41:59.300Z"
   },
   {
       "id": "steel-bender-brewyard-los-ranchos-de-albuquerque",
@@ -34,8 +34,8 @@
       "latitude": null,
       "phone": "5054333537",
       "website_url": "http://www.steelbenderbrewyard.com",
-      "updated_at": "",
-      "created_at": ""
+      "updated_at": "2023-02-21T01:41:59.300Z",
+      "created_at": "2023-02-21T01:41:59.300Z"
   },
   {
       "id": "toltec-brewing-co-albuquerque",
@@ -53,7 +53,7 @@
       "latitude": null,
       "phone": "5057307982",
       "website_url": null,
-      "updated_at": "",
-      "created_at": ""
+      "updated_at": "2023-02-21T01:41:59.300Z",
+      "created_at": "2023-02-21T01:41:59.300Z"
   }
 ]
