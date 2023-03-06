@@ -12,6 +12,8 @@ body {
 }
 
 .App {
+  display: flex;
+  align-items: center;
   font-family: Verdana, Tahoma, sans-serif;
   color: black;
   font-style: 40px;
@@ -23,10 +25,40 @@ body {
 
 nav {
     display: flex;
-    background: oldlace;
     flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
     width: 100vw;
+    height: 26vh;
     justify-content: space-around;
+    background: url('../../assets/nav-bar.gif') no-repeat center center ; 
+    mask-image: linear-gradient(to bottom, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 100%;
+  }
+  
+  a {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    color: rgb(127, 255, 165);
+    opacity: .6;
+    cursor: pointer;
+    font-weight: 400;
+    text-decoration: none;
+    padding-top: 8px;
+}
+
+a:hover {
+  color: aquamarine;
+  opacity: 1;
+  /* text-decoration: line-through; */
+  cursor: pointer;
+  /* text-decoration: underline; */
+  font-weight: bolder;
 }
 
 div {

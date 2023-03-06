@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import './Search.css'
 
 export function Search({takeZipCode}) {
   
@@ -7,7 +8,7 @@ export function Search({takeZipCode}) {
   const navigate = useNavigate()
 
   const submitForm = event => {
-    // event.preventDefault()
+    event.preventDefault()
     takeZipCode(`${postalCode}`)
     clearForm()
     navigate(`/breweries/${postalCode}`)
