@@ -6,17 +6,22 @@ div {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  /* background: rgba(233, 230, 230, 0.735); */
+  margin: 1em 20px 20px 20px;
 }
 
 .breweries-display {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin: 1em 20px 20px 20px;
   width: fit-content;
   height: auto;
   border-radius: 10px;
+  background: rgba(233, 230, 230, 0.735);
+  border: black 4px;
 }
 
