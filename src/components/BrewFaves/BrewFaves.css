@@ -1,8 +1,12 @@
+/* body {
+} */
+
 img {
   width: 5vh;
 }
 
-.brew-details {
+.saved-faves {
+  border: hotpink 3px solid;
   background: rgba(245, 238, 229, 0.909);
   width: 40vh;
   border: black 2px solid;

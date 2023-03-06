@@ -46,16 +46,15 @@ export default function BreweryDetail({ id, name, phone, street, city, state, li
   return (
     <>
       <div className='brew-details' key={id}>
-        <h1>{name}</h1>
-        <p>{phone}</p>
-        <p>{street}</p>
-        <p>{city}, {state}</p>
-        <a href={link} alt={link}><img src={siteIcon}/></a>
         <button onClick={saveFaveBrewery}>  
           {url.pathname === `/breweries/${zipCode}` 
             ? <img src={toggleButton} alt='Save to Faves'/>
             : <img src={toggleButton} alt='Remove from Faves'/>}
         </button>
+        <h3>{name}</h3>
+        <p>{phone}</p>
+        <p>{street} {city}, {state}</p>
+        <a href={link} alt={link}><img src={siteIcon}/></a>
       </div>
     </>
   )
