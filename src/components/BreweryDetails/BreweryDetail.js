@@ -4,6 +4,7 @@ import { fetchABrewery } from '../../api'
 import siteIcon from '../../assets/weblink-icon.png'
 import faveButton from '../../assets/inactive-fave.png'
 import unFaveButton from '../../assets/active-fave.png'
+import PropTypes from "prop-types"
 import './BreweryDetails.css'
 
 export default function BreweryDetail({ id, name, phone, street, city, state, link, zipCode, addFaveBreweries, faveBreweries, unFaveBrewery }) {
@@ -17,7 +18,6 @@ export default function BreweryDetail({ id, name, phone, street, city, state, li
   useEffect(() => {
     if(breweriesByZip.includes(id)){ 
       setIsFaved(true)
-      // toggleButton()
     }
     fetchABrewery(id, zipCode)
       .catch((error) => {
@@ -25,16 +25,12 @@ export default function BreweryDetail({ id, name, phone, street, city, state, li
         setNetworkError(true)
       })
       .then(data=>{
-        console.log('brewery detail', data)
-        setBreweriesbyZip(data) //array
-        }) 
-    },[])
+        setBreweriesbyZip(data)
+      }) 
+  },[])
     
-    console.log('brewsbyZip', breweriesByZip)
-    const oneBrewery = breweriesByZip.find(brewery => brewery.id === id)
-  console.log('faveBreweries', faveBreweries)
-  console.log('oneBrewery', oneBrewery)
-  
+  const oneBrewery = breweriesByZip.find(brewery => brewery.id === id)
+ 
   const saveFaveBrewery = () => {
     if(!isFaved) {
       addFaveBreweries(oneBrewery)
@@ -63,4 +59,8 @@ export default function BreweryDetail({ id, name, phone, street, city, state, li
       </div>
     </>
   )
+}
+
+BreweryDetail.propTypes = {
+  id: PropTypes.string.isRequired
 }
