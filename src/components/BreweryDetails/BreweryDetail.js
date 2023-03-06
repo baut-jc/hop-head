@@ -1,15 +1,66 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { useLocation } from 'react-router-dom'
+import { fetchABrewery } from '../../api'
 import siteIcon from '../../assets/weblink-icon.png'
+import faveButton from '../../assets/inactive-fave.png'
+import unFaveButton from '../../assets/active-fave.png'
 import './BreweryDetails.css'
 
-export function BreweryDetails({ id, name, street, contact, website }) {
+export default function BreweryDetail({ id, name, phone, street, city, state, link, zipCode, addFaveBreweries, faveBreweries, unFaveBrewery }) {
+
+  const [isFaved, setIsFaved] = useState(false)
+  const [toggleButton, setToggleButton] = useState(faveButton)
+  const [networkError, setNetworkError] = useState(false)
+  const [breweriesByZip, setBreweriesbyZip] = useState([])
+  const url = useLocation()
+
+  useEffect(() => {
+    if(breweriesByZip.includes(id)){ 
+      setIsFaved(true)
+      // toggleButton()
+    }
+    fetchABrewery(id, zipCode)
+      .catch((error) => {
+        console.error(error.message)
+        setNetworkError(true)
+      })
+      .then(data=>{
+        console.log('brewery detail', data)
+        setBreweriesbyZip(data) //array
+        }) 
+    },[])
+    
+    console.log('brewsbyZip', breweriesByZip)
+    const oneBrewery = breweriesByZip.find(brewery => brewery.id === id)
+  console.log('faveBreweries', faveBreweries)
+  console.log('oneBrewery', oneBrewery)
+  
+  const saveFaveBrewery = () => {
+    if(!isFaved) {
+      addFaveBreweries(oneBrewery)
+      setIsFaved(true)
+      setToggleButton(unFaveButton)
+    } else {
+      unFaveBrewery(oneBrewery)
+      setIsFaved(false)
+      setToggleButton(faveButton)
+    }
+  }
 
   return (
-    <div className={id}>
-      <h1>{name}</h1>
-      <p>{street}</p>
-      <p>{contact}</p>
-      <a href={website} alt={website}><img src={siteIcon}/></a>
-    </div>
+    <>
+      <div className='brew-details' key={id}>
+        <h1>{name}</h1>
+        <p>{phone}</p>
+        <p>{street}</p>
+        <p>{city}, {state}</p>
+        <a href={link} alt={link}><img src={siteIcon}/></a>
+        <button onClick={saveFaveBrewery}>  
+          {url.pathname === `/breweries/${zipCode}` 
+            ? <img src={toggleButton} alt='Save to Faves'/>
+            : <img src={toggleButton} alt='Remove from Faves'/>}
+        </button>
+      </div>
+    </>
   )
 }

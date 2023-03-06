@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { fetchData } from '../../api'
-import { BreweryDetails } from '../BreweryDetails/BreweryDetail'
+import BreweryDetails from '../BreweryDetails/BreweryDetail'
 import { Error } from '../Errors/error';
 import './Breweries.css'
 
-export const Breweries = ({zipCode}) => {
+export const Breweries = ({zipCode, addFaveBreweries, faveBreweries, unFaveBrewery}) => {
+  
   const [breweries, setBreweries] = useState([])
   const [networkError, setNetworkError] = useState(false)
-
+  
   const fetchBreweries = async () => {
     try {
       const data = await fetchData(zipCode)
@@ -19,30 +20,48 @@ export const Breweries = ({zipCode}) => {
       setNetworkError(true)
     }
   }
+  // const toggleFave = (id) => {
+  //   if (faveBreweries.includes(id)) {
+  //     setFaveBreweries(faveBreweries.filter(faveBrewID => faveBrewID !== id))
+  //   } else {
+  //     setFaveBreweries([...faveBreweries, id])
+  //   }
+  // }
 
   useEffect(() => {
     fetchBreweries()
   }, [])
+  console.log('does this do?', breweries)
 
   const breweryCards = breweries.map((brewery) => {
     console.log('brewery', brewery)
     return (
-        <div key={brewery.id} className='brewery-container'>
+        <div className='brewery-container'>
           {/* if (breweries.length === 0) */}
           <BreweryDetails 
             id={brewery.id}
+            key={brewery.id}
             name={brewery.name}
+            phone={brewery.phone}
             street={brewery.street}
-            contact={brewery.phone}
-            website={brewery.website_url}
+            city={brewery.city} 
+            state={brewery.state}
+            link={brewery.website_url}
+            zipCode={zipCode}
+            addFaveBreweries={addFaveBreweries}
+            faveBreweries={faveBreweries}
+            unFaveBrewery={unFaveBrewery}
             />
         </div>
     )
   })
 
   return (
+    <>
     <div className='breweries-display'>
-        {breweryCards.length > 0 ? breweryCards : <Error />}
+      {breweryCards.length > 0 ? breweryCards : <Error />}
+      <h1></h1>
     </div>
+    </>
   )
 }
