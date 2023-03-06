@@ -4,9 +4,10 @@ div {
 }
 
 .breweries-display {
-  height: 60vh;
+  height: fit-content;
   background: black;
   display: flex;
-  flex-direction: column;
-  justify-content: center
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
