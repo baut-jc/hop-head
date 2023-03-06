@@ -15,4 +15,26 @@ describe('Form page', () => {
     cy.get(':nth-child(4) > a').contains('BrewFaves')
   })
   
+  it('should require input', ()=> {
+    cy.get('[type="submit"]').click()
+    cy.get('input:invalid').should('have.length', 1)
+    cy.get('input').then(($input) => {
+      expect($input[0].validationMessage).to.eq('Please fill out this field.')
+    })
+  })
+
+  it('should take in a US zipCode', ()=> {
+    cy.get('[name="zipCode"]').type('87114')
+  })
+
+  it('should display breweries in the area based on zip Code input', () => {
+    cy.intercept({
+      method: 'GET',
+      url: 'https://api.openbrewerydb.org/breweries?by_postal=87114',
+    }, { fixture: 'breweries' })
+
+    cy.get('form > input').type('87114')
+      cy.get('button').click()
+    cy.url().should('eq','http://localhost:3000/breweries/87114?zipCode=87114')
+  })
 })
