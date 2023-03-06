@@ -3,11 +3,21 @@ div {
   width: 60vh;
 }
 
-.breweries-display {
-  height: fit-content;
-  background: black;
+.breweries-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  flex-wrap: wrap;
 }
+
+.breweries-display {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 1em 20px 20px 20px;
+  width: fit-content;
+  height: auto;
+  border-radius: 10px;
+}
+

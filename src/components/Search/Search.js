@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-// import { Form } from 'react-router-dom'
 
 export function Search({takeZipCode}) {
   
@@ -11,7 +10,6 @@ export function Search({takeZipCode}) {
     // event.preventDefault()
     takeZipCode(`${postalCode}`)
     clearForm()
-    console.log('CHUG!', postalCode)
     navigate(`/breweries/${postalCode}`)
   }
   

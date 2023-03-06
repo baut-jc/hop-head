@@ -2,7 +2,7 @@
 body {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   width: 100vw;
   background: url('../../assets/beer.png') no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -16,13 +16,23 @@ body {
   color: black;
   font-style: 40px;
   padding-bottom: 20px;
-  /* height: 100vh; */
   text-align: center;
+  width: 100vw;
+  background: none;
+}
+
+nav {
+    display: flex;
+    background: oldlace;
+    flex-direction: row;
+    width: 100vw;
+    justify-content: space-around;
 }
 
 div {
   display: flex;
+  justify-content: space-around;
+  width: 30vw;
   flex-direction: column;
   justify-content: center;
-  border: black solid 2px;
 }
