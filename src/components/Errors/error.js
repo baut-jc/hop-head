@@ -13,7 +13,7 @@ export function Error() {
   return (
     <div className='error'>
       <section>
-        <h3>at a different zipCode.</h3>
+        <h3>Try a different US zip code.</h3>
         <Search 
           takeZipCode={takeZipCode}/>
       </section>
