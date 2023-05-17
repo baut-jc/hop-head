@@ -1,22 +1,21 @@
-import React, { useState } from 'react'
-import { Search } from '../Search/Search'
-import './error.css'
+import React, { useState } from 'react';
+import { Search } from '../Search/Search';
+import './error.css';
 
-export function Error() {
-  const [zipCode, setZipCode] = useState('')
-  
-  const takeZipCode = inputZip => {
-    setZipCode(inputZip)
-    console.log('cheers', zipCode)
-  }
+export function Error({ showError }) {
+  const [zipCode, setZipCode] = useState('');
+
+  const takeZipCode = (inputZip) => {
+    setZipCode(inputZip);
+    console.log('cheers', zipCode);
+  };
 
   return (
-    <div className='error'>
+    <div className={`error${showError ? ' error-show' : ''}`}>
       <section>
         <h3>Try a different US zip code.</h3>
-        <Search 
-          takeZipCode={takeZipCode}/>
+        {showError && <Search takeZipCode={takeZipCode} />}
       </section>
     </div>
-  )
+  );
 }

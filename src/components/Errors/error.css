@@ -1,13 +1,7 @@
-/* div {
-  height: 60%
-} */
-
 .error {
-  width: auto;
+  width: 90vh;
   height: 61vh;
   background: url('../../assets/thirsty.gif') no-repeat center center; 
-  /* -webkit-background-size: cover; */
-  /* -moz-background-size: cover; */
   -o-background-size: cover;
   background-size: cover;
   display: flex;

@@ -2,41 +2,42 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  height: 100vh;
-  width: auto;
+  height: 100%;
+  width: 100vw;
   color: white;
+  position: relative;
 }
 
-input[type=number] {
-  width: 90vw;
-  height: 30vh;
+input[type='number'] {
+  width: 85vw;
+  height: auto;
   padding: 0;
   font-size: 15vh;
   font-weight: bold;
   color: #ebffed;
   text-align: center;
   text-shadow: 0 0 20px rgba(125, 210, 122, 0.757);
-  background-color: transparent;
-  border: none;
+  background-color: rgba(11, 12, 11, 0.857);
+  border: solid 3px rgba(125, 210, 122, 0.25);
   outline: none;
 }
 
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-input[type=number]:focus {
-  color:#fff;
+input[type='number']:focus {
+  color: #fff;
   text-shadow: 0 0 25px rgba(125, 210, 122, 0.757);
 }
 
 button {
-  /* margin-top: 2vh; */
-  /* padding: 1vh 2vw; */
-  display: flex;
-  justify-content: center;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 3vh;
   font-weight: bold;
   text-align: end;

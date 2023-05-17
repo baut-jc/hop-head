@@ -54,7 +54,7 @@ export default function BreweryDetail({ id, name, phone, street, city, state, li
         <h3>{name}</h3>
         <p>{phone}</p>
         <p>{street} {city}, {state}</p>
-        <a href={link} alt={link}><img src={siteIcon}/></a>
+        <a href={link} alt={link} align><img src={siteIcon} class="center"/></a>
       </div>
     </>
   )
