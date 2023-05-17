@@ -47,9 +47,11 @@ export const Breweries = ({zipCode, addFaveBreweries, faveBreweries, unFaveBrewe
   })
 
   return (
-      <div className='breweries-display'>
-        {breweryCards.length > 0 ? breweryCards : <Error />}
-        <h1></h1>
+      <div className='breweries'>
+        <h1>Breweries in {`${zipCode}`}</h1>
+        <div className='breweries-display'>
+          {breweryCards.length > 0 ? breweryCards : <Error />}
+        </div>
       </div>
   )
 }

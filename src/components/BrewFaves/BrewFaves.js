@@ -2,6 +2,7 @@ import React from 'react'
 import siteIcon from '../../assets/weblink-icon.png'
 import remove from '../../assets/remove.png'
 import PropTypes from 'prop-types'
+import './BrewFaves.css'
 
 export default function BrewFaves({id ,faveBreweries, unFaveBrewery}) {
   const displaySavedFaves = faveBreweries.map(brewery => {

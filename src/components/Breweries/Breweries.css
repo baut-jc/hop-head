@@ -1,25 +1,34 @@
 div {
   width: 60vh;
+  padding-bottom: 8px;
 }
 
-.breweries-container {
+.breweries {
+  display: contents;
+  height: 100vh;
+  padding-bottom: 25em;
+  flex-direction: column;
+}
+
+h1 {
+  color: rgb(127, 255, 165);
+  opacity: .6
+}
+
+.brewery-container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  /* background: rgba(233, 230, 230, 0.735); */
-  margin: 1em 20px 20px 20px;
+  margin-bottom: 15px;
 }
 
 .breweries-display {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-  justify-content: center;
-  align-items: center;
   margin: 1em 20px 20px 20px;
-  width: fit-content;
+  width: -moz-fit-content;
+  width: 97vw;
   height: auto;
   border-radius: 10px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 

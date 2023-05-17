@@ -52,12 +52,10 @@ nav {
     padding-top: 8px;
 }
 
-a:hover {
+.active {
   color: aquamarine;
   opacity: 1;
-  /* text-decoration: line-through; */
   cursor: pointer;
-  /* text-decoration: underline; */
   font-weight: bolder;
 }
 

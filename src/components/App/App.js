@@ -7,7 +7,8 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
+  // Link,
+  NavLink
 } from "react-router-dom";
 import { Breweries } from "../Breweries/Breweries";
 import { Search } from "../Search/Search";
@@ -37,10 +38,10 @@ export default function App() {
     <div className='App'>
       <Router>
         <nav>
-          <Link to="/">Home</Link>
-          <Link to="/search">Search</Link>
-          <Link to={`/breweries/${zipCode}`}>Breweries</Link>
-          <Link to="/favorites">BrewFaves</Link>
+          <NavLink to="/" activeClassName='active'>Home</NavLink>
+          <NavLink to="/search" activeClassName='active'>Search</NavLink>
+          <NavLink to={`/breweries/${zipCode}`} activeClassName='active'>Breweries</NavLink>
+          <NavLink to="/favorites" activeClassName='active'>BrewFaves</NavLink>
         </nav>
         <Routes>
           <Route 
